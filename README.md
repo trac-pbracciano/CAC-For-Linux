@@ -75,9 +75,7 @@ Possibly identified card (using /usr/share/pcsc/smartcard_list.txt):
 ### Install the PKCS#11 interface
 
 ```bash
-wget http://cackey.rkeene.org/download/0.7.5/cackey_0.7.5-1_amd64.deb
-
-sudo dpkg -i cackey_0.7.5-1_amd64.deb
+sudo apt-get install opensc
 ```
 
 ### Download the DoD Certificates
@@ -101,7 +99,7 @@ As of 18 JUL 2023, these are the latest PKI CA's -> https://dl.dod.cyber.mil/wp-
 **Make sure you are in your home directory!!**
 
 ```bash
-modutil -dbdir sql:.pli/nssdb/ -add "CAC Module" -libfile /usr/lib64/libcackey.so 
+modutil -dbdir sql:.pki/nssdb/ -add "CAC Module" -libfile /usr/lib/x86_64-linux-gnu/opensc-pkcs11.so
 ```
 
 ### See if everything actually works :crossed_fingers:
