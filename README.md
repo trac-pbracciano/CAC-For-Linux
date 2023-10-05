@@ -1,5 +1,53 @@
 # These are instructions on how to have your CAC working on Ubuntu
-*These instructions have only been used on Ubuntu v 22.04 LTS using Google Chrome. There is an issue with adding a security device on Firefox* https://bugzilla.mozilla.org/show_bug.cgi?id=1734371
+*These instructions have only been used on Ubuntu v 22.04 LTS using Google Chrome. I believe that you are able to get this working on Firefox but since Firefox is installed with snap, it isn't configured properly. There is an issue with adding a security device on Firefox* https://bugzilla.mozilla.org/show_bug.cgi?id=1734371
+
+### Here are the list of required certificates that need to be installed
+- DoD Root CA 3
+- DoD Root CA 4
+- DoD Root CA 5
+- DoD Root CA 6
+
+**EMAIL CERTIFICATES**
+|   **Subject**   |   **Issuer**  |
+| --------------- | ------------- |
+| DOD EMAIL CA-59 | DoD Root CA 3 |
+| DOD EMAIL CA-62 | DoD Root CA 3 |
+| DOD EMAIL CA-63 | DoD Root CA 3 |
+| DOD EMAIL CA-64 | DoD Root CA 3 |
+| DOD EMAIL CA-65 | DoD Root CA 3 |
+| DOD EMAIL CA-70 | DoD Root CA 6 |
+| DOD EMAIL CA-71 | DoD Root CA 3 |
+| DOD EMAIL CA-72 | DoD Root CA 6 |
+| DOD EMAIL CA-73 | DoD Root CA 6 |
+
+
+**ID CERTIFICATES**
+| **Subject**  |   **Issuer**  |
+| ------------ | ------------- |
+| DOD ID CA-59 | DoD Root CA 3 |
+| DOD ID CA-62 | DoD Root CA 3 |
+| DOD ID CA-63 | DoD Root CA 3 |
+| DOD ID CA-64 | DoD Root CA 3 |
+| DOD ID CA-65 | DoD Root CA 3 |
+| DOD ID CA-70 | DoD Root CA 6 |
+| DOD ID CA-71 | DoD Root CA 3 |
+| DOD ID CA-72 | DoD ROOT CA 6 |
+| DOD ID CA-73 | DoD ROOT CA 6 |
+
+**SW CERTIFICATES**
+| **Subject**  |   **Issuer**  |
+| ------------ | ------------- |
+| DOD SW CA-60 | DoD ROOT CA 3 |
+| DOD SW CA-61 | DoD ROOT CA 5 |
+| DOD SW CA-66 | DoD ROOT CA 3 |
+| DOD SW CA-67 | DoD ROOT CA 3 |
+| DOD SW CA-68 | DoD ROOT CA 5 |
+| DOD SW CA-69 | DoD ROOT CA 5 |
+| DOD SW CA-74 | DoD ROOT CA 6 |
+| DOD SW CA-75 | DoD ROOT CA 3 |
+| DOD SW CA-76 | DoD ROOT CA 5 |
+| DOD SW CA-77 | DoD ROOT CA 5 |
+
 
 ### First is to install the middleware
 
@@ -101,6 +149,8 @@ As of 18 JUL 2023, these are the latest PKI CA's -> https://dl.dod.cyber.mil/wp-
 ```bash
 modutil -dbdir sql:.pki/nssdb/ -add "CAC Module" -libfile /usr/lib/x86_64-linux-gnu/opensc-pkcs11.so
 ```
+
+IF YOU MAKE ANY CHANGES WITH ADDING/REMOVING CERTIFICATES WITHIN THE GOOGLE CHROME SETTINGS, YOU HAVE TO RUN THE `modutil` COMMAND AGAIN.
 
 ### See if everything actually works :crossed_fingers:
 
